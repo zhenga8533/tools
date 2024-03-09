@@ -3,7 +3,7 @@
     <form>
         <div class="form-group">
             <label for="number-input">Enter number:</label>
-            <input type="email" class="form-control" id="number-input">
+            <input type="text" class="form-control" id="number-input">
         </div>
         <!-- Base from selector -->
         <div class="form-group">
@@ -80,11 +80,12 @@
                 <option>31</option>
                 <option>32</option>
             </select>
+            <button id="convert-btn" type="button" class="btn btn-secondary" onclick="convertBase()">Convert</button>
         </div>
         <div class="form-group">
             <label for="result">Result:</label>
             <textarea class="form-control" id="result" rows="3"></textarea>
-            <button type="button" class="btn btn-secondary">Copy</button>
+            <button id="copy-btn" type="button" class="btn btn-secondary" onclick="copyResult()">Copy</button>
         </div>
     </form>
 </div>

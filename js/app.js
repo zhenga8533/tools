@@ -1,8 +1,3 @@
-// Remove hash from links
-$(window).on('hashchange', function(e){
-    history.replaceState ("", document.title, e.originalEvent.oldURL);
-});
-
 // Dynamically load pages
 $(document).ready(function() {
     // Load default content (e.g., home.html)
