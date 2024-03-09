@@ -1,7 +1,28 @@
-<br/>
 <div class="container">
+    <div class="input-group">
+        <label for="currentUtcEpochTime" class="form-label">Current UTC Epoch Time:</label>
+        <a href="#" id="currentUtcEpochTime" onclick="copyEpoch(); return false;"></a>
+    </div>
+    
     <label for="datetimePicker" class="form-label">Select Date and Time:</label>
     <div class="input-group">
         <input type="datetime-local" class="form-control" id="datetimePicker">
+        <select id="timezoneSelector" class="form-select">
+            <option value="local">Local Time</option>
+            <option value="gmt">GMT (UTC) Time</option>
+        </select>
     </div>
-  </div>
+    
+    <label for="epochInput" class="form-label">Enter Epoch Time:</label>
+    <div class="input-group">
+        <input type="number" class="form-control" id="epochInput" placeholder="Epoch Time">
+        <select id="epochUnitSelector" class="form-select">
+            <option value="seconds">Seconds</option>
+            <option value="milliseconds">Milliseconds</option>
+            <option value="microseconds">Microseconds</option>
+            <option value="nanoseconds">Nanoseconds</option>
+        </select>
+    </div>
+    
+    <label for="timeAgo" class="form-label">Relatively:</label><span id="timeAgo"></span>
+</div>
