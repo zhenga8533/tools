@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     // Function to load content based on clicked link
-    $('.nav-link').click(function(e) {
+    $(document).on('click', '.nav-link', function(e) {
         e.preventDefault();
         const page = $(this).attr('href');
         $('#main-content').load(page, function() {
