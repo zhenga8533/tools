@@ -37,3 +37,7 @@ footer {
 .form-label {
     margin-right: 0.5rem;
 }
+
+label {
+    font-weight: bold;
+}
