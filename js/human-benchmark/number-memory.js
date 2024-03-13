@@ -1,13 +1,34 @@
 let num = '';
 let level = 1;
 
+/**
+ * Reset bar timer and decrease it over 3 seconds.
+ */
+function decreaseBar() {
+    const bar = document.getElementById('bar');
+    let width = 100;
+    const interval = setInterval(frame, 30);
+
+    function frame() {
+        if (width <= 0) {
+            clearInterval(interval);
+        } else {
+            width -= 1;
+            bar.style.width = width + 'px';
+        }
+    }
+}
+
+/**
+ * Starts game by resetting global variables and HTML elements.
+ */
 function startGame() {
     // Initialize global variables
     num = String(Math.floor(Math.random() * 10));
     level = 1;
 
     // Update HTML elements
-    let input = document.getElementById('hb-btn');
+    const input = document.getElementById('hb-btn');
     input.innerText = 'Submit';
     input.onclick = submitNumber;
     document.getElementById('hb-input').value = '';
@@ -16,10 +37,14 @@ function startGame() {
     showNumber();
 }
 
+/**
+ * Display number for 3 seconds before asking user to answer.
+ */
 function showNumber() {
-    let display = document.getElementById('message');
-    let input = document.getElementById('hb-input');
-    let btn = document.getElementById('hb-btn');
+    decreaseBar();
+    const display = document.getElementById('message');
+    const input = document.getElementById('hb-input');
+    const btn = document.getElementById('hb-btn');
     display.textContent = num;
     input.disabled = true;
     btn.disabled = true;
@@ -32,8 +57,11 @@ function showNumber() {
     }, 3000);
 }
 
+/**
+ * Checks current user input for correct number to either advance level or end game.
+ */
 function submitNumber() {
-    let input = document.getElementById('hb-input');
+    const input = document.getElementById('hb-input');
 
     if (input.value == num) {
         input.value = '';
@@ -43,13 +71,16 @@ function submitNumber() {
     } else endGame();
 }
 
+/**
+ * Ends game by displaying final score and resetting to start button.
+ */
 function endGame() {
-    let display = document.getElementById('message');
+    const display = document.getElementById('message');
     display.textContent = `${num} (Level ${level})`;
     display.style.color = 'red';
 
     // Reset hb-btn
-    let input = document.getElementById('hb-btn');
-    input.innerText = 'Start';
+    const input = document.getElementById('hb-btn');
+    input.innerText = 'Restart';
     input.onclick = startGame;
 }

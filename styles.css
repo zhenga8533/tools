@@ -43,6 +43,12 @@ label {
 }
 
 /* Custom CSS */
+#bar {
+    width: 0px;
+    height: 5px;
+    background-color: #ddd;
+}
+
 #message {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
