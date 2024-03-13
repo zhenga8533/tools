@@ -75,9 +75,21 @@ function submitNumber() {
  * Ends game by displaying final score and resetting to start button.
  */
 function endGame() {
+    // Reset message display
     const display = document.getElementById('message');
     display.textContent = `${num} (Level ${level})`;
     display.style.color = 'red';
+
+    // Check for high score;
+    const current = getCookie('nm-highscore') ?? 0;
+    const score = level - 1;
+    if (score > current) {
+        const expires = new Date();
+        expires.setFullYear(expires.getFullYear() + 1);
+        document.cookie = `nm-highscore=${score}; expires=${expires.toUTCString()};`;
+        display.textContent += ', Highscore!';
+        display.style.color = 'green';
+    }
 
     // Reset hb-btn
     const input = document.getElementById('hb-btn');
