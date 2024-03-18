@@ -58,10 +58,14 @@ label {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera, and Firefox */
 }
 
-.hb-container {
+.hb-container, .centered-container {
     height: calc(100vh - 200px - 3rem);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#timer {
+    font-family: monospace;
 }
