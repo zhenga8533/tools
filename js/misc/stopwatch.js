@@ -3,7 +3,9 @@ function initializeStopwatch() {
     let running = false;
     let milliseconds = 0;
 
-    // Function to start or stop the stopwatch
+    /**
+     * Function to start or stop the stopwatch.
+     */
     window.toggleStopwatch = function() {
         if (running) {
             clearInterval(timer);
@@ -15,7 +17,9 @@ function initializeStopwatch() {
         running = !running;
     }
 
-    // Function to reset the stopwatch
+    /**
+     * Function to reset the stopwatch.
+     */
     window.resetStopwatch = function() {
         clearInterval(timer);
         running = false;
@@ -25,7 +29,9 @@ function initializeStopwatch() {
         document.getElementById('timer').textContent = '00h 00m 00s 000';
     }
 
-    // Function to update the time display
+    /**
+     * Function to update the time display.
+     */
     function updateTime() {
         milliseconds += 25;
         const hours = Math.floor(milliseconds / (60 * 60 * 1000)).toString().padStart(2, '0');
