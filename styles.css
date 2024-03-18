@@ -68,4 +68,12 @@ label {
 
 #timer {
     font-family: monospace;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+    text-align: center;
 }
