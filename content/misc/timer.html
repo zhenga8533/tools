@@ -1,4 +1,9 @@
 <div class="container centered-container">
+    <audio id="alarm">
+        <source src="../../assets/alarm.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
     <h3>Timer</h3>
     <div>
         <button id="hour-up" onmousedown="startIncrement(3600)" onmouseup="stopIncrement()">ʌ</button>
@@ -12,7 +17,7 @@
         <button id="second-down" onmousedown="startIncrement(-1)" onmouseup="stopIncrement()">v</button>
     </div>
     <div>
-        <button id="toggle-btn" class="btn btn-secondary" onclick="toggleStopwatch()">Start</button>
-        <button id="reset-btn" class="btn btn-secondary" onclick="resetStopwatch()">Reset</button>
+        <button id="toggle-btn" class="btn btn-secondary" onclick="toggleTimer()">Start</button>
+        <button id="reset-btn" class="btn btn-secondary" onclick="resetTimer()">Reset</button>
     </div>
 </div>
