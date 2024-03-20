@@ -4,6 +4,11 @@ function initializeTimer() {
     let stopwatch;
     let running = false;
 
+    /**
+     * Converts timer HTML timestamp into seconds.
+     * 
+     * @returns {Number} Total seconds of timer.
+     */
     function parseTime() {
         const timer = document.getElementById('timer');
         const times = timer.value.split(':').map(t => parseInt(t));
@@ -11,11 +16,18 @@ function initializeTimer() {
         return isNaN(time) ? 0 : time;
     }
 
+    /**
+     * Increments timer by an inputted amount of seconds.
+     * 
+     * @param {Number} increment - Number of seconds to add.
+     */
     function incrementTimer(increment) {
         let time = parseTime() + (increment ?? -1);
         if (time < 0) {
             // Sound alarm if timer ends.
             if (increment === undefined) {
+                document.getElementById('start-btn').style.display = '';
+                document.getElementById('stop-btn').style.display = 'none';
                 document.getElementById('alarm').play();
                 clearInterval(stopwatch);
             }
@@ -32,6 +44,11 @@ function initializeTimer() {
         document.getElementById('timer').value = `${hours}:${minutes}:${time}`;
     }
 
+    /**
+     * Increments timer by given increment when holding button down.
+     * 
+     * @param {Number} increment  - Number of seconds to increment by.
+     */
     window.startIncrement = function(increment) {
         incrementTimer(increment);
         clearInterval(interval);
@@ -41,18 +58,26 @@ function initializeTimer() {
         }, incrementSpeed);
     }
 
-    window.stopIncrement = function(increment) {
+    /**
+     * Stops the incrementations when button is lifted.
+     */
+    window.stopIncrement = function() {
         clearInterval(interval);
         incrementSpeed = 200;
     }
 
+    /**
+     * Function to start or stop the timer.
+     */
     window.toggleTimer = function() {
         if (running) {
             clearInterval(stopwatch);
-            document.getElementById('toggle-btn').textContent = 'Start';
+            document.getElementById('start-btn').style.display = '';
+            document.getElementById('stop-btn').style.display = 'none';
         } else {
             stopwatch = setInterval(incrementTimer, 1000);
-            document.getElementById('toggle-btn').textContent = 'Stop';
+            document.getElementById('start-btn').style.display = 'none';
+            document.getElementById('stop-btn').style.display = '';
         }
         running = !running;
     }
@@ -63,7 +88,8 @@ function initializeTimer() {
     window.resetTimer = function() {
         clearInterval(stopwatch);
         running = false;
-        document.getElementById('toggle-btn').textContent = 'Start';
+        document.getElementById('start-btn').style.display = '';
+        document.getElementById('stop-btn').style.display = 'none';
         document.getElementById('timer').value = '00:00:00';
     }
 }
