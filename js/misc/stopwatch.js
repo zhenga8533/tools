@@ -9,10 +9,12 @@ function initializeStopwatch() {
     window.toggleStopwatch = function() {
         if (running) {
             clearInterval(timer);
-            document.getElementById('toggle-btn').textContent = 'Start';
+            document.getElementById('start-btn').style.display = '';
+            document.getElementById('stop-btn').style.display = 'none';
         } else {
             timer = setInterval(updateTime, 25);
-            document.getElementById('toggle-btn').textContent = 'Stop';
+            document.getElementById('start-btn').style.display = 'none';
+            document.getElementById('stop-btn').style.display = '';
         }
         running = !running;
     }
@@ -25,7 +27,8 @@ function initializeStopwatch() {
         running = false;
         seconds = 0;
         milliseconds = 0;
-        document.getElementById('toggle-btn').textContent = 'Start';
+        document.getElementById('start-btn').style.display = '';
+        document.getElementById('stop-btn').style.display = 'none';
         document.getElementById('timer').textContent = '00h 00m 00s 000';
     }
 
