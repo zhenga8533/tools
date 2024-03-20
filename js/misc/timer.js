@@ -2,7 +2,6 @@ function initializeTimer() {
     let interval;
     let incrementSpeed = 200;
     let stopwatch;
-    let running = false;
 
     /**
      * Converts timer HTML timestamp into seconds.
@@ -26,13 +25,10 @@ function initializeTimer() {
         if (time < 0) {
             // Sound alarm if timer ends.
             if (increment === undefined) {
-                document.getElementById('start-btn').style.display = '';
-                document.getElementById('stop-btn').style.display = 'none';
+                window.stopTimer();
                 document.getElementById('alarm').play();
-                clearInterval(stopwatch);
             }
 
-            running = false;
             return;
         }
 
@@ -67,29 +63,28 @@ function initializeTimer() {
     }
 
     /**
-     * Function to start or stop the timer.
+     * Function to start the timer.
      */
-    window.toggleTimer = function() {
-        if (running) {
-            clearInterval(stopwatch);
-            document.getElementById('start-btn').style.display = '';
-            document.getElementById('stop-btn').style.display = 'none';
-        } else {
-            stopwatch = setInterval(incrementTimer, 1000);
-            document.getElementById('start-btn').style.display = 'none';
-            document.getElementById('stop-btn').style.display = '';
-        }
-        running = !running;
+    window.startTimer = function() {
+        stopwatch = setInterval(incrementTimer, 1000);
+        document.getElementById('start-btn').style.display = 'none';
+        document.getElementById('stop-btn').style.display = '';
+    }
+
+    /**
+     * Function to stop the timer.
+     */
+    window.stopTimer = function() {
+        clearInterval(stopwatch);
+        document.getElementById('start-btn').style.display = '';
+        document.getElementById('stop-btn').style.display = 'none';
     }
 
     /**
      * Function to reset the stopwatch.
      */
     window.resetTimer = function() {
-        clearInterval(stopwatch);
-        running = false;
-        document.getElementById('start-btn').style.display = '';
-        document.getElementById('stop-btn').style.display = 'none';
+        window.stopTimer();
         document.getElementById('timer').value = '00:00:00';
     }
 }
