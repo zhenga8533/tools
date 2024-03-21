@@ -1,7 +1,9 @@
 <div class="container hb-container">
     <h1>Reaction Time</h1>
-    <p>This is a simple tool to measure your reaction time.</p>
+    <p id="info">This is a simple tool to measure your reaction time.</p>
     <div id="hb-game">
-        <button class="btn btn-secondary" onclick="startGame()">Start</button>
+        <button id="start-btn" class="btn btn-secondary" onclick="startGame()">Start</button>
+        <button id="click-btn" class="btn btn-success" onclick="cycleGame()" style="display: none;">Click!</button>
+        <button id="wait-btn" class="btn btn-danger" onclick="failGame()" style="display: none;">Wait...</button>
     </div>
 </div>
