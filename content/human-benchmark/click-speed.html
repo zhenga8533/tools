@@ -1,7 +1,8 @@
 <div class="container hb-container">
-    <h1>Chimp Test</h1>
-    <p>This is a test to measure your clicks per second.</p>
+    <h1>Click Speed</h1>
+    <p id="info">This is a test to measure your clicks per second.</p>
     <div id="hb-game">
-        <button class="btn btn-secondary" onclick="startGame()">Start</button>
+        <button id="start-btn" class="btn btn-secondary" onclick="startGame()">Start</button>
+        <button id="click-btn" class="btn btn-success" onclick="addClick()" style="display: none;">Click!</button>
     </div>
 </div>
